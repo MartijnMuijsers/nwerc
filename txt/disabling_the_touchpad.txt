@@ -1,0 +1,4 @@
+Run in terminal:
+	xinput list
+	xinput set-prop 12 "Device Enabled" 0
+where 12 is the id of the touchpad that you can see with xinput list.
