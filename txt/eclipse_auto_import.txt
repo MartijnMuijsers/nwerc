@@ -1,0 +1,1 @@
+Window -> Preferences -> Java -> Editor -> Save Actions -> Organize imports
