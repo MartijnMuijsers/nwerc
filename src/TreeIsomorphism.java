@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 // An implementation to check whether two unrooted trees are isomorphic
-// It does by rooting the trees in their center(s) and subsequently labeling the nodes and comparing the labels
+// It does this by rooting the trees in their center(s) and subsequently labeling the nodes and comparing the labels
 // Running time: O(n) (optimal)
 public class TreeIsomorphism {
 	
