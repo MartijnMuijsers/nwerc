@@ -1,0 +1,14 @@
+Printing a double in a specific format can be done with DecimalFormat:
+	DecimalFormat df = new DecimalFormat(“#.00”);
+where “#” means: I don’t care how many digits,
+and “0” means: exactly this many digits.
+
+“#.00” will print 384.29342 as 384.29
+“#.##” will print 384.29342 as 384.29
+“#.00” will print 5.1 as 5.10
+“#.##” will print 5.1 as 5.1
+“#.00” will print 0.7 as .70
+“#.##” will print 0.7 as .7
+
+For custom rounding, use
+	df.setRoundingMode(RoundingMode);
