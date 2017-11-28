@@ -32,47 +32,47 @@ public class FordFulkerson {
 	
 	// Run the algorithm (uses input variables and fills output variables)
 	static void fordFulkerson() {
-	    max_flow = 0;
-	    rc = new int[N][];
-	    f = new int[N];
-	    p = new int[N];
-	    for (int i = 0; i < N; i++) {
-	    	rc[i] = c[i].clone();
-	    }
-	    while (true) {
+		max_flow = 0;
+		rc = new int[N][];
+		f = new int[N];
+		p = new int[N];
+		for (int i = 0; i < N; i++) {
+			rc[i] = c[i].clone();
+		}
+		while (true) {
 			long path_flow = bfs();
 			if (path_flow == 0) {
-		 	    break;
+		 		break;
 			}
 			for (int v = t; v != S; v = p[v]) {
-			    int u = p[v];
-			    rc[u][v] -= path_flow;
-			    rc[v][u] += path_flow;
+				int u = p[v];
+				rc[u][v] -= path_flow;
+				rc[v][u] += path_flow;
 			}
-	        max_flow += path_flow;
-	    }
+			max_flow += path_flow;
+		}
 	}
 	
 	// Breadth-first search implementation used by the algorithm
 	static int bfs() {
-	    boolean[] visited = new boolean[N];
-	    visited[S] = true;
-	    LinkedList<Integer> q = new LinkedList<>();
-	    q.add(S);
-	    p[S] = -1;
-	    f[S] = Integer.MAX_VALUE;
-	    while (!q.isEmpty()){
+		boolean[] visited = new boolean[N];
+		visited[S] = true;
+		LinkedList<Integer> q = new LinkedList<>();
+		q.add(S);
+		p[S] = -1;
+		f[S] = Integer.MAX_VALUE;
+		while (!q.isEmpty()){
 			int u = q.poll();
 			for (int v = 0; v < N; v++){
-		  	    if (!visited[v] && rc[u][v] > 0) {
-			    	q.add(v);
-			    	p[v] = u;
-			    	visited[v] = true;
-			    	f[v] = Math.min(f[u], rc[u][v]);
-			    }
+		  		if (!visited[v] && rc[u][v] > 0) {
+					q.add(v);
+					p[v] = u;
+					visited[v] = true;
+					f[v] = Math.min(f[u], rc[u][v]);
+				}
 			}
-	    }
-	    return visited[t]?f[t]:0;
+		}
+		return visited[t]?f[t]:0;
 	}
 	
 }
